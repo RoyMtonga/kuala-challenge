@@ -64,7 +64,7 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 p-20 gap-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 p-1 gap-3">
           {loading ? (
             <>
               <Skeleton className="w-64 h-60" />
