@@ -13,17 +13,22 @@ import {
 } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton";
 import { VehicleMake, VehicleModel, VehicleVariant } from "@/types";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import MakesPage from "./(routes)/Makes/page";
+import ModelsPage from "./(routes)/Models/page";
+import VariantsPage from "./(routes)/Variants/page";
 
 interface WhitebookProps {
   name: string;
   data: VehicleMake[] | VehicleModel[] | VehicleVariant[];
 }
 
+type TableType = "MakesPage" | "ModelsPage" | "VariantsPage";
+
 const HomePage = () => {
 
   const [whitebook, setWhitebook] = useState<WhitebookProps[]>([]);
+  const [table, setTable] = useState<TableType>("MakesPage");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -55,16 +60,29 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-  return (
-    <div className="h-screen flex">
-      <div className="flex flex-col m-auto gap-y-5">
-        <div className="text-sm lg:text-2xl md:text-lg text-center">
-          <p className="leading-relaxed">
-            Manage Vehicle White Books In One Place.....
-          </p>
-        </div>
+  const renderTable = () => {
+    switch (table) {
+      case "MakesPage":
+        return <MakesPage />;
+      case "ModelsPage":
+        return <ModelsPage />;
+      case "VariantsPage":
+        return <VariantsPage />;
+      default:
+        return null;
+    }
+  };
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 p-1 gap-3">
+
+  return (
+    <div className="flex items-center justify-center flex-col">
+      <section>
+        <div className="container mx-auto p-4 flex justify-between items-center top-0 mt-20">
+          <h1 className="text-2xl font-bold">Whitebook Dashboard</h1>
+        </div>
+      </section>
+      <section className="container mx-auto px-4 py-8 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {loading ? (
             <>
               <Skeleton className="w-64 h-60" />
@@ -76,25 +94,35 @@ const HomePage = () => {
               <Card key={book.name}>
                 <CardHeader>
                   <CardTitle>{book.name}</CardTitle>
-                  <CardDescription>Manage all Vehicle {book.name}</CardDescription>
+                  <CardDescription>Total number of {book.name.toLowerCase()}s</CardDescription>
                 </CardHeader>
-                <CardContent className="w-full flex justify-center gap-3 h-16">
-                  <span className="text-muted-foreground">{book.data.length}</span>
-                  <span>{book.name}</span>
+                <CardContent>
+                  {loading ? (
+                    <Skeleton className="h-8 w-20" />
+                  ) : (
+                    <p className="text-4xl font-bold">{book.data.length}</p>
+                  )}
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full">
-                    <Link href={`/${book.name}`}>
-                      Manage {book.name}
-                    </Link>
+                  <Button className="w-full" onClick={() => setTable(`${book.name}Page` as TableType)}>
+                      View {book.name}
                   </Button>
                 </CardFooter>
               </Card>
             ))
           )}
         </div>
+        <Card>
+            <CardHeader>
+              <CardTitle>Vehicle Data</CardTitle>
+              <CardDescription>Detailed list of all vehicle makes, variants, and models</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {renderTable()}
+            </CardContent>
+        </Card>
+      </section>
       </div>
-    </div>
   );
 }
 

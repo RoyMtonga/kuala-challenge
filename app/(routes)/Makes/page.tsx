@@ -1,6 +1,5 @@
 "use client";
 import getMakes from "@/actions/get-makes";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
     Table,
@@ -11,7 +10,6 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { VehicleMake } from "@/types";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const MakesPage = () => {
@@ -30,8 +28,7 @@ const MakesPage = () => {
 
     return (
         <div>
-            <Button className="m-4"><Link href={'/'}>Home</Link></Button>
-            <div className="lg:px-80 px-11 py-10">
+            <div className="px-11 py-5">
                 <Table>
                     <TableHeader>
                         <TableRow>
@@ -54,7 +51,7 @@ const MakesPage = () => {
                                 <TableRow key={make.vehicle_id}>
                                     <TableCell className="text-left">{make.vehicle_id}</TableCell>
                                     <TableCell className="text-center">{make.name}</TableCell>
-                                    <TableCell className="grid grid-cols-8 mx-auto w-full">
+                                    <TableCell className="grid grid-cols-8 sm:grid-cols-2 mx-auto w-full">
                                         {make.year_range.map((year) => (
                                             <p key={year}>{year}</p>
                                         ))}

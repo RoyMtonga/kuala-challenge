@@ -1,6 +1,5 @@
 "use client"
 import getModels from "@/actions/get-models"
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
     Table,
@@ -11,7 +10,6 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { VehicleModel } from "@/types";
-import Link from "next/link";
 import React, { useEffect, useState } from 'react'
 
 
@@ -30,8 +28,7 @@ const ModelsPage = () => {
     }, []);
     return (
         <div>
-            <Button className="m-4"><Link href={'/'}>Home</Link></Button>
-            <div className="lg:px-80 px-11 py-10">
+            <div className="px-11 py-5">
                 <Table>
                     <TableHeader>
                         <TableRow>
