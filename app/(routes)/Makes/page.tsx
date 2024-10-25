@@ -51,7 +51,7 @@ const MakesPage = () => {
                                 <TableRow key={make.vehicle_id}>
                                     <TableCell className="text-left">{make.vehicle_id}</TableCell>
                                     <TableCell className="text-center">{make.name}</TableCell>
-                                    <TableCell className="grid grid-cols-8 sm:grid-cols-2 mx-auto w-full">
+                                    <TableCell className="grid grid-cols-8 mx-auto w-full">
                                         {make.year_range.map((year) => (
                                             <p key={year}>{year}</p>
                                         ))}
