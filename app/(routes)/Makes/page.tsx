@@ -28,7 +28,7 @@ const MakesPage = () => {
 
     return (
         <div>
-            <div className="px-11 py-5">
+            <div className=" py-5">
                 <Table>
                     <TableHeader>
                         <TableRow>
