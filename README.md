@@ -7,11 +7,8 @@ Attempt of kuala techs coding challenge using Nextjs
 - [Demo](#demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Getting Started](#getting-started)
 
 ## Demo
 
@@ -30,6 +27,31 @@ https://kuala-challenge.vercel.app/
 - **React** - JavaScript library for building UI components
 - **Tailwind CSS** - Utility-first CSS framework
 
+## Project Structre
+
+## Data Fetching
+
+The project includes data-fetching utilities to streamline API calls. One such function, getMakes, is used to fetch vehicle makes from the API. Here's how it works:
+    
+    ```TypeScript
+    import { VehicleMake } from "@/types";
+
+    const URL = `${process.env.NEXT_PUBLIC_KUALA_API_URL}/get-vehicle-makes`
+
+    const getMakes = async (): Promise<VehicleMake[]> => {
+        const res = await fetch(URL);
+        const result = await res.json();
+        return result.data;
+    };
+
+    export default getMakes;
+
+## Key Aspects
+
+- Environment Variables: Uses process.env.NEXT_PUBLIC_KUALA_API_URL for the API base URL, making it configurable based on the environment.
+- TypeScript: Enforces type checking by specifying Promise<VehicleMake[]> as the return type, ensuring data consistency.
+- Asynchronous Data Fetching: Uses async/await to handle asynchronous API calls smoothly
+
 ## Getting Started
 
 ### Prerequisites
@@ -39,11 +61,20 @@ https://kuala-challenge.vercel.app/
 ### Installation
 
 1. Clone the repository
-2. Install dependencies
-    npm install
-
-
    ```bash
    git clone https://github.com/RoyMtonga/kuala-challenge.git
    cd repo-name
 
+2. Install dependencies
+    ```bash
+    npm install
+
+4. Set up environment variables
+
+Create a .env.local file in the root of your project and add the environment variable. Here’s an example:
+    ```env
+    NEXT_PUBLIC_KUALA_API_URL=https://whitebook-engine.kuala.io
+
+5. Start the development server
+     ```bash
+    npm run dev
