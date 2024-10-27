@@ -39,6 +39,9 @@ https://kuala-challenge.vercel.app/
 ### Installation
 
 1. Clone the repository
+2. Install dependencies
+    npm install
+
 
    ```bash
    git clone https://github.com/RoyMtonga/kuala-challenge.git
