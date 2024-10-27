@@ -31,7 +31,7 @@ https://kuala-challenge.vercel.app/
 
 The project includes data-fetching utilities to streamline API calls. One such function, getMakes, is used to fetch vehicle makes from the API. Here's how it works:
     
-    ```typscript
+   ```typescript
     import { VehicleMake } from "@/types";
 
     const URL = `${process.env.NEXT_PUBLIC_KUALA_API_URL}/get-vehicle-makes`
@@ -43,7 +43,7 @@ The project includes data-fetching utilities to streamline API calls. One such f
     };
 
     export default getMakes;
-    ```
+   ```
 
 ## Key Aspects
 
