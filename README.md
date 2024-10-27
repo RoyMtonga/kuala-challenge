@@ -16,9 +16,7 @@ https://kuala-challenge.vercel.app/
 
 ## Features
 
-- List the main features of the project.
-- Example: **User Authentication** using NextAuth.js
-- **Dynamic Routing** with Next.js' file-based router
+- **Next.js' file-based router
 - **SSR and SSG** for fast page loads and SEO optimization
 
 ## Technologies Used
@@ -33,7 +31,7 @@ https://kuala-challenge.vercel.app/
 
 The project includes data-fetching utilities to streamline API calls. One such function, getMakes, is used to fetch vehicle makes from the API. Here's how it works:
     
-    ```TypeScript
+    ```typscript
     import { VehicleMake } from "@/types";
 
     const URL = `${process.env.NEXT_PUBLIC_KUALA_API_URL}/get-vehicle-makes`
@@ -45,6 +43,7 @@ The project includes data-fetching utilities to streamline API calls. One such f
     };
 
     export default getMakes;
+    ```
 
 ## Key Aspects
 
