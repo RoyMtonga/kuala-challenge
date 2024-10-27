@@ -17,7 +17,7 @@ https://kuala-challenge.vercel.app/
 ## Features
 
 - **Next.js' file-based router
-- **SSR and SSG** for fast page loads and SEO optimization
+- **SSR for fast page loads
 
 ## Technologies Used
 
@@ -27,7 +27,7 @@ https://kuala-challenge.vercel.app/
 
 ## Project Structre
 
-## Data Fetching
+### Data Fetching
 
 The project includes data-fetching utilities to streamline API calls. One such function, getMakes, is used to fetch vehicle makes from the API. Here's how it works:
     
@@ -45,7 +45,7 @@ The project includes data-fetching utilities to streamline API calls. One such f
     export default getMakes;
    ```
 
-## Key Aspects
+### Key Aspects
 
 - Environment Variables: Uses process.env.NEXT_PUBLIC_KUALA_API_URL for the API base URL, making it configurable based on the environment.
 - TypeScript: Enforces type checking by specifying Promise<VehicleMake[]> as the return type, ensuring data consistency.
