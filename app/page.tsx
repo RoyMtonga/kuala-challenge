@@ -36,31 +36,40 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const makes = await getMakes();
-      const models = await getModels();
-      const variants = await getVariants();
 
-      const data = [
-        {
-          name: "Makes",
-          data: makes,
-        },
-        {
-          name: "Models",
-          data: models,
-        },
-        {
-          name: "Variants",
-          data: variants,
-        },
-      ];
+      try {
+        const [makes, models, variants] = await Promise.all([
+          getMakes(),
+          getModels(),
+          getVariants(),
+        ]);
 
-      setWhitebook(data);
-      setLoading(false);
+        const data = [
+          {
+            name: "Makes",
+            data: makes,
+          },
+          {
+            name: "Models",
+            data: models,
+          },
+          {
+            name: "Variants",
+            data: variants,
+          },
+        ];
+
+        setWhitebook(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
   }, []);
+
 
   const renderTable = () => {
     switch (table) {
