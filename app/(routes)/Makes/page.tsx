@@ -12,7 +12,7 @@ import {
 import { VehicleMake } from "@/types";
 import React, { useEffect, useState } from "react";
 
-const MakesPage = () => {
+const Makes = () => {
     const [makes, setMakes] = useState<VehicleMake[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -42,7 +42,7 @@ const MakesPage = () => {
                             Array.from({ length: 20 }).map((_, index) => (
                                 <TableRow key={index}>
                                     <TableCell colSpan={3}>
-                                        <Skeleton className="w-full h-10" />
+                                        <Skeleton className="w-full h-36" />
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -66,4 +66,4 @@ const MakesPage = () => {
     );
 };
 
-export default MakesPage;
+export default Makes;

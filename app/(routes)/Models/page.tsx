@@ -13,7 +13,7 @@ import { VehicleModel } from "@/types";
 import React, { useEffect, useState } from 'react'
 
 
-const ModelsPage = () => {
+const Models = () => {
     const [models, setModels] = useState<VehicleModel[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -43,7 +43,7 @@ const ModelsPage = () => {
                             Array.from({ length: 4 }).map((_, index) => (
                                 <TableRow key={index}>
                                     <TableCell colSpan={4}>
-                                        <Skeleton className="w-full h-48" />
+                                        <Skeleton className="w-full h-36" />
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -70,4 +70,4 @@ const ModelsPage = () => {
     )
 }
 
-export default ModelsPage
+export default Models

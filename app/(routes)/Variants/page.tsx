@@ -13,7 +13,7 @@ import { VehicleVariant } from "@/types";
 import React, { useEffect, useState } from 'react'
 
 
-const VariantsPage = () => {
+const Variants = () => {
     const [variants, setVariants] = useState<VehicleVariant[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -46,7 +46,7 @@ const VariantsPage = () => {
                             Array.from({ length: 4 }).map((_, index) => (
                                 <TableRow key={index}>
                                     <TableCell colSpan={7}>
-                                        <Skeleton className="w-full h-40" />
+                                        <Skeleton className="w-full h-36" />
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -89,4 +89,4 @@ const VariantsPage = () => {
     )
 }
 
-export default VariantsPage
+export default Variants

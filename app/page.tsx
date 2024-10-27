@@ -14,21 +14,23 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { VehicleMake, VehicleModel, VehicleVariant } from "@/types";
 import { useEffect, useState } from "react";
-import MakesPage from "./(routes)/Makes/page";
-import ModelsPage from "./(routes)/Models/page";
-import VariantsPage from "./(routes)/Variants/page";
+import Makes from "./(routes)/Makes/page";
+import Models from "./(routes)/Models/page";
+import Variants from "./(routes)/Variants/page";
+import { Maximize2 } from "lucide-react";
+import Link from "next/link";
 
 interface WhitebookProps {
   name: string;
   data: VehicleMake[] | VehicleModel[] | VehicleVariant[];
 }
 
-type TableType = "MakesPage" | "ModelsPage" | "VariantsPage";
+type TableType = "Makes" | "Models" | "Variants";
 
 const HomePage = () => {
 
   const [whitebook, setWhitebook] = useState<WhitebookProps[]>([]);
-  const [table, setTable] = useState<TableType>("MakesPage");
+  const [table, setTable] = useState<TableType>("Makes");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -62,12 +64,12 @@ const HomePage = () => {
 
   const renderTable = () => {
     switch (table) {
-      case "MakesPage":
-        return <MakesPage />;
-      case "ModelsPage":
-        return <ModelsPage />;
-      case "VariantsPage":
-        return <VariantsPage />;
+      case "Makes":
+        return <Makes />;
+      case "Models":
+        return <Models />;
+      case "Variants":
+        return <Variants />;
       default:
         return null;
     }
@@ -92,30 +94,29 @@ const HomePage = () => {
           ) : (
             whitebook.map((book) => (
               <Card key={book.name}>
-                <CardHeader>
-                  <CardTitle>{book.name}</CardTitle>
-                  <CardDescription>Total number of {book.name.toLowerCase()}s</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {loading ? (
-                    <Skeleton className="h-8 w-20" />
-                  ) : (
+                  <CardHeader>
+                    <CardTitle>{book.name}</CardTitle>
+                    <CardDescription>Total number of {book.name.toLowerCase()}s</CardDescription>
+                  </CardHeader>
+                  <CardContent>
                     <p className="text-4xl font-bold">{book.data.length}</p>
-                  )}
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full" onClick={() => setTable(`${book.name}Page` as TableType)}>
+                  </CardContent>
+                  <CardFooter>
+                    <Button className="w-full" onClick={() => setTable(`${book.name}` as TableType)}>
                       View {book.name}
-                  </Button>
-                </CardFooter>
-              </Card>
+                    </Button>
+                  </CardFooter>
+                </Card>
             ))
           )}
         </div>
         <Card>
             <CardHeader>
               <CardTitle>Vehicle Data</CardTitle>
-              <CardDescription>Detailed list of all vehicle makes, variants, and models</CardDescription>
+              <CardDescription className="flex justify-between">
+                <span>Detailed list of all vehicle {table}</span> 
+                <Link href={`/${table}`}><Maximize2 /> </Link>
+              </CardDescription>
             </CardHeader>
             <CardContent>
               {renderTable()}
