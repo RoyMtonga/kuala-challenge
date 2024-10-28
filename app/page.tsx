@@ -14,11 +14,11 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { VehicleMake, VehicleModel, VehicleVariant } from "@/types";
 import { useEffect, useState } from "react";
+import { Maximize2 } from "lucide-react";
+import Link from "next/link";
 import Makes from "./(routes)/Makes/page";
 import Models from "./(routes)/Models/page";
 import Variants from "./(routes)/Variants/page";
-import { Maximize2 } from "lucide-react";
-import Link from "next/link";
 
 interface WhitebookProps {
   name: string;

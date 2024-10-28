@@ -13,7 +13,7 @@ export type VehicleModel = {
     year_range: number[];
 };
 
-type Transmission = {
+export type Transmission = {
     id: number;
     created_at: string;
     updated_at: string;
@@ -49,7 +49,7 @@ type BodyDimension = {
     gvm: number;
 };
 
-type Engine = {
+export type Engine = {
     id: number;
     created_at: string;
     updated_at: string;
